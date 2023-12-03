@@ -10,6 +10,26 @@ services:
       - 27017:27017
     volumes:
       - mongo_data:/data/db
+  basketdb:
+    container_name: basketdb
+    restart: always
+    ports:
+      - 6379:6379
+  basketapi:
+    container_name: basketapi
+    image: basketapi
+    build:
+      context: .
+      dockerfile: src/Services/Basket/BasketAPI/Dockerfile
+      args:
+        - configuration=Debug
+    ports:
+      - 8001:80
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+      - CacheSettings:ConnectionString=basketdb:6379
+    depends_on:
+      - basketdb
   catalogapi:
     container_name: catalogapi
     image: catalogapi
