@@ -54,8 +54,25 @@ services:
     environment:
       - ASPNETCORE_ENVIRONMENT=Development
       - CacheSettings:ConnectionString=basketdb:6379
+      - GrpcSettings:DiscountUrl=http://discountgrpc:8003
     depends_on:
       - basketdb
+  discountgrpc:
+    container_name: discountgrpc
+    image: discountgrpc
+    build:
+      context: .
+      dockerfile: src/Services/Discount/DiscountGrpc/Dockerfile
+      args:
+        - configuration=Debug
+    ports:
+      - 8003:80
+    depends_on:
+      - discountdb
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+      - DatabaseSetting:ConnectionString=Server=discountdb;Port=5432;Database=DiscountDb;Password=admin1234;User Id=admin
+    
   catalogapi:
     container_name: catalogapi
     image: catalogapi

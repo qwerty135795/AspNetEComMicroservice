@@ -16,6 +16,11 @@ services:
     build:
       context: .
       dockerfile: src/Services/Discount/DiscountAPI/Dockerfile
+  discountgrpc:
+    image: discountgrpc
+    build:
+      context: .
+      dockerfile: src/Services/Discount/DiscountGrpc/Dockerfile
   catalogapi:
     image: catalogapi
     build:
