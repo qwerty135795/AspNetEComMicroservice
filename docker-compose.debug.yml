@@ -72,7 +72,21 @@ services:
     environment:
       - ASPNETCORE_ENVIRONMENT=Development
       - DatabaseSetting:ConnectionString=Server=discountdb;Port=5432;Database=DiscountDb;Password=admin1234;User Id=admin
-    
+  orderapi:
+    container_name: orderapi
+    image: orderapi
+    build: 
+      context: .
+      dockerfile: src/Services/Ordering/OrderingAPI/Dockerfile
+      args:
+        - configuration=Debug
+    ports:
+      - 8004:80
+    depends_on:
+      - orderdb
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+      - ConnectionStrings:SqlServer=TrustServerCertificate=True;Server=orderdb;Database=OrderDb;User Id = sa;Password=ChloeWithout3
   catalogapi:
     container_name: catalogapi
     image: catalogapi
@@ -99,6 +113,14 @@ services:
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock
       - portainer_data:/data
+  orderdb:
+    container_name: orderdb
+    restart: always
+    environment:
+      - ACCEPT_EULA=Y
+      - MSSQL_SA_PASSWORD=ChloeWithout3
+    ports:
+      - 1433:1433
   pgadmin:
     container_name: pgadmin
     restart: always
