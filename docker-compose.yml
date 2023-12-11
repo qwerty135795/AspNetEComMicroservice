@@ -38,6 +38,8 @@ services:
     build:
       context: .
       dockerfile: src/Services/Basket/BasketAPI/Dockerfile
+  rabbitmq:
+    image: rabbitmq:3-management-alpine
 volumes:
   mongo_data:
   portainer_data:

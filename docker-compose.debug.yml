@@ -41,6 +41,12 @@ services:
       - DatabaseSetting:ConnectionString=Server=discountdb;Port=5432;Database=DiscountDb;Password=admin1234;User Id=admin
     depends_on:
       - discountdb
+  rabbitmq:
+    container_name: rabbitmq
+    restart: always
+    ports:
+      - 5672:5672
+      - 15672:15672
   basketapi:
     container_name: basketapi
     image: basketapi
@@ -55,8 +61,10 @@ services:
       - ASPNETCORE_ENVIRONMENT=Development
       - CacheSettings:ConnectionString=basketdb:6379
       - GrpcSettings:DiscountUrl=http://discountgrpc:8003
+      - RabbitMq__Host=rabbitmq
     depends_on:
       - basketdb
+      - rabbitmq
   discountgrpc:
     container_name: discountgrpc
     image: discountgrpc
@@ -71,6 +79,7 @@ services:
       - discountdb
     environment:
       - ASPNETCORE_ENVIRONMENT=Development
+      - port=8003
       - DatabaseSetting:ConnectionString=Server=discountdb;Port=5432;Database=DiscountDb;Password=admin1234;User Id=admin
   orderapi:
     container_name: orderapi
@@ -84,8 +93,10 @@ services:
       - 8004:80
     depends_on:
       - orderdb
+      - rabbitmq
     environment:
       - ASPNETCORE_ENVIRONMENT=Development
+      - RabbitMq__Host=rabbitmq
       - ConnectionStrings:SqlServer=TrustServerCertificate=True;Server=orderdb;Database=OrderDb;User Id = sa;Password=ChloeWithout3
   catalogapi:
     container_name: catalogapi

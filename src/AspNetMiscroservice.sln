@@ -27,13 +27,14 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OrderingApplication", "Serv
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OrderingInfrastructure", "Services\Ordering\OrderingInfrastructure\OrderingInfrastructure.csproj", "{05F32392-AE8F-4847-A5F5-D3549A60C477}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "BuildingBlocks", "BuildingBlocks", "{C40B2857-7BAA-4572-AF56-D832D0436A07}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EventBusMessages", "BuildingBlocks\EventBusMessages\EventBusMessages.csproj", "{ADE87A57-F93D-48C0-9EA2-B36D64088CDB}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
 		Release|Any CPU = Release|Any CPU
-	EndGlobalSection
-	GlobalSection(SolutionProperties) = preSolution
-		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
 		{CA9CE836-0459-437B-ACDF-1EDCB98B270E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
@@ -68,6 +69,13 @@ Global
 		{05F32392-AE8F-4847-A5F5-D3549A60C477}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{05F32392-AE8F-4847-A5F5-D3549A60C477}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{05F32392-AE8F-4847-A5F5-D3549A60C477}.Release|Any CPU.Build.0 = Release|Any CPU
+		{ADE87A57-F93D-48C0-9EA2-B36D64088CDB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{ADE87A57-F93D-48C0-9EA2-B36D64088CDB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{ADE87A57-F93D-48C0-9EA2-B36D64088CDB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{ADE87A57-F93D-48C0-9EA2-B36D64088CDB}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{CA9CE836-0459-437B-ACDF-1EDCB98B270E} = {0D4891C9-76A8-41D5-B199-532FB845EBE4}
@@ -81,5 +89,6 @@ Global
 		{43DF28EE-51AF-4F8F-8A1C-23BA4607BE90} = {1A0D0DC1-025B-4525-9E77-FC1A3F142E10}
 		{602DC23E-38A9-405D-B0E7-CE3BB17EEA2E} = {1A0D0DC1-025B-4525-9E77-FC1A3F142E10}
 		{05F32392-AE8F-4847-A5F5-D3549A60C477} = {1A0D0DC1-025B-4525-9E77-FC1A3F142E10}
+		{ADE87A57-F93D-48C0-9EA2-B36D64088CDB} = {C40B2857-7BAA-4572-AF56-D832D0436A07}
 	EndGlobalSection
 EndGlobal

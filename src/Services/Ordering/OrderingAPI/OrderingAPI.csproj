@@ -8,6 +8,8 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="AutoMapper.Extensions.Microsoft.DependencyInjection" Version="12.0.1" />
+    <PackageReference Include="MassTransit.RabbitMQ" Version="8.1.2" />
     <PackageReference Include="Microsoft.AspNetCore.OpenApi" Version="7.0.14" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="7.0.14">
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
@@ -19,6 +21,7 @@
   <ItemGroup>
     <ProjectReference Include="..\OrderingApplication\OrderingApplication.csproj" />
     <ProjectReference Include="..\OrderingInfrastructure\OrderingInfrastructure.csproj" />
+    <ProjectReference Include="..\..\..\BuildingBlocks\EventBusMessages\EventBusMessages.csproj" />
   </ItemGroup>
 
 </Project>

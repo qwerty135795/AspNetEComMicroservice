@@ -14,7 +14,7 @@ builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
 builder.Services.AddScoped<IDiscountGrpcRepository, DiscountGrpcRepository>();
 builder.WebHost.ConfigureKestrel(opt =>
 {
-    opt.ListenAnyIP(8003, o => o.Protocols = HttpProtocols.Http2);
+    opt.ListenAnyIP(builder.Configuration.GetValue<int>("port"), o => o.Protocols = HttpProtocols.Http2);
 });
 var app = builder.Build();
 app.MigrateDatabase<Program>();
