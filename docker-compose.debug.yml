@@ -3,6 +3,25 @@
 version: '3.4'
 
 services:
+  shop-aggregator:
+    container_name: shop-aggregator
+    image: shop-aggregator
+    build: 
+      context: .
+      dockerfile: src/ApiGateways/ShoppingAggregator/Dockerfile
+      args:
+        - configuration=Debug
+    ports:
+      - 8005:80
+    depends_on:
+      - catalogapi
+      - basketapi
+      - orderapi
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+      - ApiSettings:CatalogApi=http://catalogapi
+      - ApiSettings:BasketApi=http://basketapi
+      - ApiSettings:OrderApi=http://orderapi
   ocelot-gw:
     container_name: ocelot-gw
     image: ocelot-gw

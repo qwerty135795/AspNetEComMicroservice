@@ -28,6 +28,7 @@ public static class WebApplicationExtensions
             command.ExecuteNonQuery();
             command.CommandText = "INSERT INTO Coupon (ProductName, Description, Amount) VALUES ('Samsung 10', 'Samsung Discount', 100)";
             command.ExecuteNonQuery();
+            connection.Close();
             logger.LogInformation("Migrate Database Completed");
         }
         catch (NpgsqlException ex)
