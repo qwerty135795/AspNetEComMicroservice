@@ -1,6 +1,11 @@
 version: '3.4'
 
 services:
+  ocelot-gw:
+    image: ocelot-gw
+    build:
+      context: .
+      dockerfile: src/ApiGateways/OcelotApiGw/Dockerfile
   pgadmin:
     image: dpage/pgadmin4
   portainer:

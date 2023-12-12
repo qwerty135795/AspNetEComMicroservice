@@ -3,6 +3,23 @@
 version: '3.4'
 
 services:
+  ocelot-gw:
+    container_name: ocelot-gw
+    image: ocelot-gw
+    build: 
+      context: .
+      dockerfile: src/ApiGateways/OcelotApiGw/Dockerfile
+      args:
+        - configuration=Debug
+    depends_on:
+      - catalogapi
+      - basketapi
+      - discountapi
+      - orderapi
+    ports:
+      - 8010:80
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
   catalogdb:
     container_name: catalogdb
     restart: always
